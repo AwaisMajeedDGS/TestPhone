@@ -26,6 +26,23 @@ namespace TestPhone
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            bundles.Add(new ScriptBundle("~/bundles/app/libs").Include(
+                    "~/core/libs/smart-table/smart-table.js",
+                    "~/core/libs/smart-table/sortable.js",
+                     "~/core/libs/smart-table/dirPagination.js",
+                    "~/core/libs/Lodash/lodash.js",
+                    "~/core/libs/seleci/seleci.js",
+                    "~/core/libs/seleci/ng-seleci.js",
+                    "~/core/libs/angular-pageslide/angular-pageslide-directive.js",
+                    "~/core/libs/smart-table/lrDragNDrop.js"
+                    ));
+            bundles.Add(new ScriptBundle("~/bundles/app/core").Include(
+             "~/core/modules/WebDialer/services/webdialerSrvc.js",
+             "~/core/modules/WebDialer/controllers/webdialerController.js",
+             "~/core/modules/WebDialer/webdialerModule.js",
+
+             "~/core/app.js"
+              ));
         }
     }
 }

@@ -2,30 +2,54 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="dialpad-wraper" >
+        <div class="dialpad-main" ng-controller="webdialerController">
+            <div class="top-box-div">
+                <a id="InboundStatus" href="javascript:void(0)"><div class="top-box"><div class="top-box-icon"><img src="~/images/inbound-icon.png" width="26" height="26" /></div>Inbound</div></a>
+                <a id="OutboundStatus" href="javascript:void(0)"><div class="top-box"><div class="top-box-icon"><img src="~/images/outbound-icon.png" width="26" height="26" /></div>Outbound</div></a>
+                <a id="AvailableStatus" href="javascript:void(0)"><div class="top-box"><div class="top-box-icon"><img src="~/images/available-icin.png" width="26" height="26" /></div>Wait</div></a>
+                <a id="NotAvailableStatus" href="javascript:void(0)"><div class="top-box no-border"><div class="top-box-icon"><img src="~/images/not-available-icin.png" width="26" height="26" /></div>Break</div></a>
+            </div>
+            <div class="phone-number-div">
+                <div class="phone-number"><input name="" id="PhoneNumber" type="text" maxlength="10" /></div>
+                <a id="removenumber" href="javascript:void(0)"><div class="delete-icon"><img src="~/images/number-delete-icon.png" width="41" height="22" /></div></a>
+            </div>
+            <div class="digits-wraper">
+                <ul>
+                    <li><a href="javascript:void(0)" ng-click="dtmf()">1</a></li>
+                    <li><a href="javascript:void(0)" onclick="EnterInput('2');">2</a></li>
+                    <li><a href="javascript:void(0)" onclick="EnterInput('3');">3</a></li>
+                    <li><a href="javascript:void(0)" onclick="EnterInput('4');">4</a></li>
+                    <li><a href="javascript:void(0)" onclick="EnterInput('5');">5</a></li>
+                    <li><a href="javascript:void(0)" onclick="EnterInput('6');">6</a></li>
+                    <li><a href="javascript:void(0)" onclick="EnterInput('7');">7</a></li>
+                    <li><a href="javascript:void(0)" onclick="EnterInput('8');">8</a></li>
+                    <li><a href="javascript:void(0)" onclick="EnterInput('9');">9</a></li>
+                    <li><a href="javascript:void(0)" class="staricstyle">*</a></li>
+                    <li><a href="javascript:void(0)" onclick="EnterInput('0');">0</a></li>
+                    <li><a href="javascript:void(0)">#</a></li>
+                </ul>
+            </div>
+            <div class="btm-links-div">
+                <ul>
+                    <li><a id="Consultancy" ng-click="consultancy()" href="javascript:void(0)"><span class="btm-icon"><img src="~/images/consultancy-icon.png" width="35" height="26" /></span>Consultancy</a></li>
+                    <li><a id="Transfer" ng-click="transfer()" href="javascript:void(0)"><span class="btm-icon"><img src="~/images/transfer-icon.png" width="35" height="26" /></span>Transfer</a></li>
+                    <li><a id="Cancel" ng-click="cancel()" href="javascript:void(0)"><span class="btm-icon"><img src="~/images/cancel-icon.png" width="35" height="26" /></span>Cancel</a></li>
+                    <li><a id="Conference" ng-click="conference()" href="javascript:void(0)"><span class="btm-icon"><img src="~/images/conference-icon.png" width="35" height="26" /></span>Conference</a></li>
+                    <li class="green-bg"><a id="Call" ng-click="manualcall()" href="javascript:void(0)" onclick='call();'><span class="green-icon"><img src="~/images/call-icon.png" width="35" height="26" /></span></a></li>
+                    <li><a id="Toggle" ng-click="toggle()" href="javascript:void(0)"><span class="btm-icon"><img src="~/images/toggle-icon.png" width="35" height="26" /></span>Toggle</a></li>
+                    <li><a id="Hold" ng-click="hold()" href="javascript:void(0)"><span class="btm-icon"><img src="~/images/hold-icon.png" width="35" height="26" /></span><span id="HoldButtonText">Hold</span></a></li>
+                    <li class="red-bg"><a id="EndCall" ng-click="endcall()" href="javascript:void(0)" onclick="hangup();"><span class="red-icon"><img src="~/images/call-icon.png" width="35" height="26" /></span></a></li>
+                    <li><a id="Mute" ng-click="mute()" href="javascript:void(0)"><span class="btm-icon"><img src="~/images/mute-icon.png" width="35" height="26" /></span><span id="MuteButtonText">Mute</span></a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+@*<script>
+    var app = angular.module('myApp', []);
+    app.controller('webdialerController', function ($scope) {
+        $scope.dtmf = function () {
+            alert("test");
+        }
+    });
+</script>*@
