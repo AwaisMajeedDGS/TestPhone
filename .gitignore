@@ -3,3 +3,5 @@
 ################################################################################
 
 /TestPhone/TestPhone/bin
+/TestPhone/TestPhone/obj/Debug
+/TestPhone/packages

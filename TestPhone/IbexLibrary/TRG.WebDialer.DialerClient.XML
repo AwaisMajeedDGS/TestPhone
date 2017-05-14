@@ -1,0 +1,1084 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TRG.WebDialer.DialerClient</name>
+    </assembly>
+    <members>
+        <member name="E:TRG.WebDialer.DialerClient.Agent.OnBreak">
+            <summary>
+            Event raised when Agent goes on break.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.Agent.OnCall">
+            <summary>
+            Event raised when agent goes on call.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.Agent.OnCampaignLogout">
+            <summary>
+            Event raised when agent logs out from campaign. 
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.Agent.OnConferenceStateChange">
+            <summary>
+            Event raised when conference state changes.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.Agent.OnConsultHoldToggle">
+            <summary>
+            Event raised when side on hold changes (customer/ Agent).
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.Agent.OnHoldStateChange">
+            <summary>
+            Event raised when hold state changes.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.Agent.OnLeadChange">
+            <summary>
+            Event raised when the lead changes.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.Agent.OnPlayMessageComplete">
+            <summary>
+            Event raised when Play message is completed.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.Agent.OnRecordingStateChange">
+            <summary>
+            Event raised when recording state is changed.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.Agent.OnSupervisorMessage">
+            <summary>
+            Event raised when supervisor message is received.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.Agent.OnTalk">
+            <summary>
+            Event raised when agenet goes on Talk.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.Agent.OnVoiceStateChange">
+            <summary>
+            Event raised when agent's voice state is changed.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.Agent.OnWait">
+            <summary>
+            Event raised when agent goes on wait.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.Agent.OnWrapup">
+            <summary>
+            Event raised when agent goes on wrap.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.Agent.OnVoicemailMessage">
+            <summary>
+            Event raised when there is a voice mail message.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.Agent.OnStartMasking">
+            <summary>
+            Event raised when recording masking starts.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.Agent.OnStopMasking">
+            <summary>
+            Event raised when recording masking stops.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.Agent.OnError">
+            <summary>
+            Event raised in case of any error.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.Agent.OnRingStop">
+            <summary>
+            Event raised when inbound call stops ringing.
+            </summary>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.#ctor(System.String,System.String)">
+            <summary>
+            Initialized a new instance of TRG.WebDialer.DialerClient.Agent 
+            </summary>
+            <param name="agentID">Agent ID</param>
+            <param name="hubUrl">Hub URL</param>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.CancelConference">
+            <summary>
+            Removes third-party from conference/consult
+            </summary>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.CompleteConference(System.String)">
+            <summary>
+            Removes agent from conference/consult. Customer and third-party continue talking. Agent goes on wrap state.
+            </summary>
+            <param name="jsonLead">Updated JSON lead</param>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.DialAutoCallback(System.String,System.String,System.String,System.String)">
+            <summary>
+            Dial callback of type Auto.
+            </summary>
+            <param name="campaignID">Campaign ID</param>
+            <param name="leadID">Lead's unique ID</param>
+            <param name="numberField">Number field in result table</param>
+            <param name="termCodeField">Term code field in result table</param>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.DialCallback(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Dial callback.
+            </summary>
+            <param name="campaignID">Campaign ID</param>
+            <param name="leadID">Lead's unique ID</param>
+            <param name="numberField">Number field's name in result table</param>
+            <param name="termCodeField">Term code field's name in result table</param>
+            <param name="overrideTimezone">Indicator if time zone needs to be overriden</param>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.DialManualCall(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Dial Manual Call by Lead.
+            </summary>
+            <param name="campaignID">Campaign ID</param>
+            <param name="leadID">Lead's unique id</param>
+            <param name="numberField">Number field's name in result table</param>
+            <param name="termCodeField">Term Code field's name in result table </param>
+            <param name="overrideTimezone">Indicator if time zone needs to be overriden</param>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.DialManualCallAsync(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Dial Manual Call by Number.
+            </summary>
+            <param name="campaignID">Campaign ID</param>
+            <param name="countryCode">Country code</param>
+            <param name="number">Number</param>
+            <param name="overrideTimezone">Indicator if time zone needs to be overriden</param>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.DialPreviewCall(System.Boolean)">
+            <summary>
+            Dial the current lead in preview mode.
+            </summary>
+            <param name="overrideTimezone">Override timezone restriction</param>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.DisposeCall(System.String,System.String,System.Boolean)">
+            <summary>
+            End current call with provided disposition and update lead
+            </summary>
+            <param name="termCode">Two digit end code</param>
+            <param name="jsonLead">Updated lead in JSON string</param>
+            <param name="isAutomatic">True in case end call request is made by system instead of agent</param>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.EndBreak(System.String)">
+            <summary>
+            Ends the break.
+            </summary>
+            <param name="campaignID">Campaign ID</param>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.GetQueuesAsync(System.String)">
+            <summary>
+            Gets list of routing queues for the provided campaign
+            </summary>
+            <param name="campaignID">Campaign ID</param>
+            <returns>Returns Task. Waiting on it returns list of queues</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.GetTransferAgentsAsync(System.String,TRG.WebDialer.DialerClient.TransferType)">
+            <summary>
+            Gets list of agents for the provided campaign that can be transferred to
+            </summary>
+            <param name="campaignID">Campaign ID</param>
+            <param name="transferType">Transfer type: Blind, Conference, Consult</param>
+            <returns>Returns Task. Waiting on it returns list of agents</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.HangupCall">
+            <summary>
+            Disconnect current call
+            </summary>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.HoldCall">
+            <summary>
+            Put customer on hold
+            </summary>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.ResumeCall">
+            <summary>
+            Put customer off hold
+            </summary>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.SetMaskingOffset(System.Int32)">
+            <summary>
+            Start masking in recording from the time T + offset where T is current time.
+            </summary>
+            <param name="offset">Offset from current time in seconds. For example, if you pass -60 then masking will start from current time -60 seconds</param>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.SkipPreviewCall(System.String,System.Boolean)">
+            <summary>
+            Skip the current lead in preview mode.
+            </summary>
+            <param name="jsonLead">Updated lead object</param>
+            <param name="isAutomatic">True in case skip is done automatically by system instead of agent</param>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.StartBreak(System.String,System.String)">
+            <summary>
+            Start the break.
+            </summary>
+            <param name="campaignID">Campaign ID</param>
+            <param name="breakCode">Break Code</param>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.StartMasking">
+            <summary>
+            Start masking in recording. Useful for sensitive information shared on call such as credit card number.
+            </summary>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.StopMasking">
+            <summary>
+            Stop masking in recording. Useful for sensitive information shared on call such as credit card number.
+            </summary>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.AcceptCall">
+            <summary>
+            Connects current ringing IB call to agent
+            </summary>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.RejectCall(System.Boolean)">
+            <summary>
+            Rejects current ringing IB call
+            </summary>
+            <param name="isAutomatic">True in case reject call request is made by system instead of agent</param>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Agent.UpdateLead(System.String)">
+            <summary>
+            Update the lead of current call with provided lead
+            </summary>
+            <param name="jsonLead">Lead in JSON string</param>
+        </member>
+        <member name="T:TRG.WebDialer.DialerClient.AgentEventArgs">
+            <summary>
+            Contains data in case of agent relevant events.
+            </summary>
+        </member>
+        <member name="T:TRG.WebDialer.DialerClient.CallEventArgs">
+            <summary>
+            Contains data in case of call relevant events.
+            </summary>
+        </member>
+        <member name="T:TRG.WebDialer.DialerClient.VoicemailEventArgs">
+            <summary>
+            Contains data in case of voice mail relevant events.
+            </summary>
+        </member>
+        <member name="T:TRG.WebDialer.DialerClient.AgentLoginInfo">
+            <summary>
+            Contains agent active login information.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.AgentLoginInfo.VoiceMode">
+            <summary>
+            Voice mode that agent uses for voice connection with Dialer.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.AgentLoginInfo.LoginCampaigns">
+            <summary>
+            Contains list of campaign details in which agent is logged-in.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.AgentLoginInfo.LoginErrors">
+            <summary>
+            Specifies campaign login failures
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.AgentLoginInfo.UTCOffset">
+            <summary>
+            Specifies UTC offset of Dialer time.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.AgentLoginInfo.DefaultCountryCode">
+            <summary>
+            Specifies Dialer default country code.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.AgentLoginInfo.TimeZones">
+            <summary>
+            Contains list if Time Zone information.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.AgentLoginInfo.IsVoiceConnected">
+            <summary>
+            Specifies if agent voice connection is established.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.AgentLoginInfo.ServerTime">
+            <summary>
+            Specifies current time on Dialer machine.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.AgentLoginInfo.UTCName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.AgentLoginInfo.SipConfigurations">
+            <summary>
+            Contains configuration information for soft phone voice connection.
+            </summary>
+        </member>
+        <member name="T:TRG.WebDialer.DialerClient.CampaignInfoEx">
+            <summary>
+            Represents campaign detail information.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.CampaignInfoEx.ScreenURL">
+            <summary>
+            Agent campaign screen url
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.CampaignInfoEx.BreakCodes">
+            <summary>
+            Break codes assigned to campaign.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.CampaignInfoEx.TermCodes">
+            <summary>
+            Term codes assigned to campaign.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.CampaignInfoEx.WrapTimeout">
+            <summary>
+            AGent wrap timeout value in seconds.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.CampaignInfoEx.PreviewTimeout">
+            <summary>
+            Preview call timeout value in seconds.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.CampaignInfoEx.Permissions">
+            <summary>
+            Campaign group permissions.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.CampaignInfoEx.TransferCampaigns">
+            <summary>
+            Campaigns allowed to transfer calls to.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.CampaignInfoEx.RecordingType">
+            <summary>
+            Campaign recording setting
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.CampaignInfoEx.CallbackColumns">
+            <summary>
+            Default results table columns to display to agent for callback.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.CampaignInfoEx.LeadSearchColumns">
+            <summary>
+            Default results table columns to display to agent for lead search.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.CampaignInfoEx.IsCallBackTimeIn24HoursFormat">
+            <summary>
+            Display callback time to agent in 24 hour format.
+            </summary>
+        </member>
+        <member name="T:TRG.WebDialer.DialerClient.Lead">
+            <summary>
+            Represents the data structure to hold lead information
+            </summary>
+        </member>
+        <member name="F:TRG.WebDialer.DialerClient.Lead.SqlMinimumDateTime">
+            <summary>
+            Constant value that represents SQL minimum supported date/time
+            </summary>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Lead.#ctor">
+            <summary>
+            Constructs a lead instance
+            </summary>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Lead.#ctor(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Constructs an instance of lead with provided key/value pairs
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.Lead.UniqueID">
+            <summary>
+            Unique id that represents this lead
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.Lead.Country">
+            <summary>
+            The lead telephone number country code
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.Lead.Number">
+            <summary>
+            The lead telephone number
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.Lead.AreaCode">
+            <summary>
+            The lead telephone number area code
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.Lead.CallID">
+            <summary>
+            The call ID when last time this lead was call or call received on this lead
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.Lead.LastCallDateTime">
+            <summary>
+            Last date/time when this lead was called or call received on this lead
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.Lead.TermCode">
+            <summary>
+            Last term code assigned to lead
+            </summary>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Lead.GetColumn(System.String)">
+            <summary>
+            Retrieves value of column with specified name
+            </summary>
+            <param name="column">Column name</param>
+            <returns>Column value</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Lead.ContainsColumn(System.String)">
+            <summary>
+            Determines if lead contains specified column
+            </summary>
+            <param name="column"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Lead.TryGetColumn(System.String,System.Object@)">
+            <summary>
+            Tries to get specified column value
+            </summary>
+            <param name="column">Column name</param>
+            <param name="val">Column value</param>
+            <returns>True if value is retrieved otherwise, false</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Lead.SetColumn(System.String,System.Object)">
+            <summary>
+            Sets specified column value in lead
+            </summary>
+            <param name="column">Column name</param>
+            <param name="val">Column value</param>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Lead.ToJson">
+            <summary>
+            Converts the lead into key/value pairs in json format
+            </summary>
+            <returns>Resulting json string</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Lead.FromJson(System.String)">
+            <summary>
+            Converts the specified json string into lead
+            </summary>
+            <param name="json"></param>
+            <returns>If conversion succeeds then resulting lead is returned otherwise exception is thrown</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Lead.TryConvert``1(System.Object,``0@)">
+            <summary>
+            Tries to convert provided data into specified generic type
+            </summary>
+            <typeparam name="T">Generic type</typeparam>
+            <param name="data">Input data</param>
+            <param name="value">Target type value</param>
+            <returns>True on success otherwise, false</returns>
+        </member>
+        <member name="T:TRG.WebDialer.DialerClient.Client">
+            <summary>
+            Represents a client of Webdialer.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.Client.Instance">
+            <summary>
+            Single instance of <see cref="T:TRG.WebDialer.DialerClient.IClient"/> to communicate with Dialer.
+            </summary>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Client.TRG#WebDialer#DialerClient#IClient#GetVoiceMailMessages(System.String,System.Int32)">
+            <summary>
+            Get list of Voicemail messages against Voicemail box id.
+            </summary>
+            <param name="voiceMailBoxID">Voicemail box id</param>
+            <returns>JSON string containing list of voicemail messages</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Client.TRG#WebDialer#DialerClient#IClient#DeleteVoiceMessage(System.Collections.Generic.List{System.Int32},System.String)">
+            <summary>
+            Delete voicemail messages.
+            </summary>
+            <param name="messageids">List of message ids</param>
+            <param name="agentid">Agent ID</param>
+            <returns>Any error. Empty string in case of No Error.</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Client.TRG#WebDialer#DialerClient#IClient#MarkMessageAsRead(System.Collections.Generic.List{System.Int32},System.String)">
+            <summary>
+            Mark voicemail messages as read
+            </summary>
+            <param name="messageids">List of message ids</param>
+            <param name="agentid">Agent ID</param>
+            <returns>Any error. Empty string in case of No Error.</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.Client.TRG#WebDialer#DialerClient#IClient#ReAssignMessages(System.String,System.Collections.Generic.List{System.Int32},System.Int32,System.Int32)">
+            <summary>
+            Re-assign voicemail messages from one box to another.
+            </summary>
+            <param name="messageids">List of message ids</param>
+            <param name="desboxid">Destination voicemail box id</param>
+            <param name="sourceboxid">Source voicemail box id</param>
+            <returns>Any error. Empty string in case of No Error.</returns>
+        </member>
+        <member name="T:TRG.WebDialer.DialerClient.IAgent">
+            <summary>
+            This interface contains functionality related to agent functions.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.IAgent.OnError">
+            <summary>
+            Event raised when an error occurs as a result of a request.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.IAgent.OnVoiceStateChange">
+            <summary>
+            Event raised when agent's voice state is changed.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.IAgent.OnCampaignLogout">
+            <summary>
+            Event raised when agent logs out from campaign. 
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.IAgent.OnBreak">
+            <summary>
+            Event raised when Agent goes on break.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.IAgent.OnWait">
+            <summary>
+            Event raised when agent goes on wait.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.IAgent.OnWrapup">
+            <summary>
+            Event raised when agent goes on wrap.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.IAgent.OnCall">
+            <summary>
+            Event raised when agent goes on call.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.IAgent.OnTalk">
+            <summary>
+            Event raised when agenet goes on Talk.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.IAgent.OnRecordingStateChange">
+            <summary>
+            Event raised when recording state is changed.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.IAgent.OnHoldStateChange">
+            <summary>
+            Event raised when hold state changes.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.IAgent.OnConsultHoldToggle">
+            <summary>
+            Event raised when side on hold changes (customer/ Agent).
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.IAgent.OnConferenceStateChange">
+            <summary>
+            Event raised when conference state changes.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.IAgent.OnPlayMessageComplete">
+            <summary>
+            Event raised when Play message is completed.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.IAgent.OnSupervisorMessage">
+            <summary>
+            Event raised when supervisor message is received.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.IAgent.OnLeadChange">
+            <summary>
+            Event raised when the lead changes.
+            </summary>
+        </member>
+        <member name="E:TRG.WebDialer.DialerClient.IAgent.OnRingStop">
+            <summary>
+            Event raised when inbound call stops ringing.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.IAgent.ID">
+            <summary>
+            Agent ID
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.IAgent.LoginInfo">
+            <summary>
+            Contains agent login information for the current session.
+            </summary>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.StartBreak(System.String,System.String)">
+            <summary>
+            Requests Dialer to send agent on-break. Once dialer sends the agent on-break then <see cref="E:TRG.WebDialer.DialerClient.IAgent.OnBreak"/> event is raised.
+            </summary>
+            <param name="campaignID">Campaign ID</param>
+            <param name="breakCode">Break Code</param>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.EndBreak(System.String)">
+            <summary>
+            Requests Dialer to end agent break status.
+            </summary>
+            <param name="campaignID">Campaign ID</param>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.DialManualCallAsync(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Dial manual call with country code and number. If multiple leads exist then Dialer returns list of available
+            leads. User can select a lead use <see cref="M:TRG.WebDialer.DialerClient.IAgent.DialManualCall(System.String,System.String,System.String,System.String,System.Boolean)"/> passing
+            along lead unique ID.
+            </summary>
+            <param name="campaignID">Campaign ID</param>
+            <param name="countryCode">Country code</param>
+            <param name="number">Number</param>
+            <param name="overrideTimezone">Indicator if time zone needs to be overriden</param>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.DialManualCall(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Dial Manual Call by Lead.
+            </summary>
+            <param name="campaignID">Campaign ID</param>
+            <param name="leadID">Lead's unique id</param>
+            <param name="numberField">Number field's name in result table</param>
+            <param name="termCodeField">Term Code field's name in result table </param>
+            <param name="overrideTimezone">Indicator if time zone needs to be overriden</param>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.DialCallback(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Dial callback.
+            </summary>
+            <param name="campaignID">Campaign ID</param>
+            <param name="leadID">Lead's unique ID</param>
+            <param name="numberField">Number field's name in result table</param>
+            <param name="termCodeField">Term code field's name in result table</param>
+            <param name="overrideTimezone">Indicator if time zone needs to be overriden</param>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.DialAutoCallback(System.String,System.String,System.String,System.String)">
+            <summary>
+            Dial callback of type Auto.
+            </summary>
+            <param name="campaignID">Campaign ID</param>
+            <param name="leadID">Lead's unique ID</param>
+            <param name="numberField">Number field in result table</param>
+            <param name="termCodeField">Term code field in result table</param>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.DialPreviewCall(System.Boolean)">
+            <summary>
+            Dial the current lead in preview mode.
+            </summary>
+            <param name="overrideTimezone">Override timezone restriction</param>
+            <returns>Return Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.SkipPreviewCall(System.String,System.Boolean)">
+            <summary>
+            Skip the current lead in preview mode.
+            </summary>
+            <param name="lead">Updated lead object</param>
+            <param name="isAutomatic">True in case skip is done automatically by system instead of agent</param>
+            <returns>Return Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.HoldCall">
+            <summary>
+            Put customer on hold
+            </summary>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.ResumeCall">
+            <summary>
+            Put customer off hold
+            </summary>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.StartMasking">
+            <summary>
+            Start masking in recording. Useful for sensitive information shared on call such as credit card number.
+            </summary>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.StopMasking">
+            <summary>
+            Stop masking in recording. Useful for sensitive information shared on call such as credit card number.
+            </summary>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.SetMaskingOffset(System.Int32)">
+            <summary>
+            Start masking in recording from the time T + offset where T is current time.
+            </summary>
+            <param name="offset">Offset from current time in seconds. For example, if you pass -60 then masking will start from current time -60 seconds</param>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.HangupCall">
+            <summary>
+            Disconnect current call
+            </summary>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.DisposeCall(System.String,System.String,System.Boolean)">
+            <summary>
+            End current call with provided disposition and update lead
+            </summary>
+            <param name="termCode">Two digit end code</param>
+            <param name="lead">Updated Json string that contains lead data</param>
+            <param name="isAutomatic">True in case end call request is made by system instead of agent</param>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.UpdateLead(System.String)">
+            <summary>
+            Update the current call associated lead information in leads database with provided lead
+            </summary>
+            <param name="lead">Json string that contains lead data</param>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.CampaignBlindTransfer(System.String,System.String)">
+            <summary>
+            Blind transfer current call to provided campaign
+            </summary>
+            <param name="campaignID">Target campaign ID</param>
+            <param name="lead">Json string that contains lead data</param>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.CampaignConference(System.String,System.String,System.Boolean)">
+            <summary>
+            Conference call to provided campaign
+            </summary>
+            <param name="campaignID">Target campaign ID</param>
+            <param name="lead">Json string that contains lead data</param>
+            <param name="holdCustomer">If true then customer is put on hold</param>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.AgentBlindTransfer(System.String,System.String,System.String)">
+            <summary>
+            Blind transfer current call to provided campaign agent
+            </summary>
+            <param name="agentID">Target agent ID</param>
+            <param name="campaignID">Agent campaign ID</param>
+            <param name="lead">Json string that contains lead data</param>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.AgentConference(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Conference call to provided campaign agent
+            </summary>
+            <param name="agentID">Agent ID</param>
+            <param name="campaignID">Agent campaign ID</param>
+            <param name="lead">Json string that contains lead data</param>
+            <param name="holdCustomer">If <see langword="True"/> then customer is put on hold</param>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.TelcoBlindTransfer(System.String,System.String,System.String)">
+            <summary>
+            Transfer current call to external telco number
+            </summary>
+            <param name="countryCode">Country code of external number</param>
+            <param name="number">External number</param>
+            <param name="lead">Json string that contains lead data</param>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.TelcoConference(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Conference call to external telco number
+            </summary>
+            <param name="countryCode">Country code of external number</param>
+            <param name="number">External number</param>
+            <param name="lead">Json string that contains lead data</param>
+            <param name="holdCustomer">If true then customer is put on hold</param>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.IPBlindTransfer(System.String,System.String,System.String)">
+            <summary>
+            Transfer current call to SIP address
+            </summary>
+            <param name="sipAddress">SIP address to transfer to. e.g., 1234@127.0.0.1</param>
+            <param name="displayName">Caller ID text</param>
+            <param name="lead">Json string that contains lead data</param>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.IPConference(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Conference call to SIP address
+            </summary>
+            <param name="sipAddress">SIP address to transfer to. e.g., 1234@127.0.0.1</param>
+            <param name="displayName">Caller ID text</param>
+            <param name="lead">Json string that contains lead data</param>
+            <param name="holdCustomer">If true then customer is put on hold</param>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.CompleteConference(System.String)">
+            <summary>
+            Removes agent from conference/consult. Customer and third-party continue talking. Agent goes on wrap state.
+            </summary>
+            <param name="lead">Json string that contains lead data</param>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.CancelConference">
+            <summary>
+            Removes third-party from conference/consult
+            </summary>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.SwitchToConference">
+            <summary>
+            Switches from consult to conference
+            </summary>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.SwitchToConsult">
+            <summary>
+            Switches from conference to consult
+            </summary>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.HoldCustomer">
+            <summary>
+            During consult call, puts customer on hold and makes consultant (3rd party) side live
+            </summary>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.HoldConsultant">
+            <summary>
+            During consult call, puts consultant(3rd party) on hold and make customer side live
+            </summary>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.QueueBlindTransfer(System.String,System.String,System.String)">
+            <summary>
+            Transfer current call to queue
+            </summary>
+            <param name="campaignID">Target campaign</param>
+            <param name="queueID">Target routing queue ID</param>
+            <param name="lead">Json string that contains lead data</param>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.QueueConference(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Conference call to queue
+            </summary>
+            <param name="campaignID">Target campaign</param>
+            <param name="queueID">Target queue ID</param>
+            <param name="lead">Json string that contains lead data</param>
+            <param name="holdCustomer">If true then customer is put on hold</param>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.GetTransferAgentsAsync(System.String,TRG.WebDialer.DialerClient.TransferType)">
+            <summary>
+            Gets list of agents for the provided campaign that can be transferred to
+            </summary>
+            <param name="campaignID">Campaign ID</param>
+            <param name="type">Transfer type: Blind, Conference, Consult</param>
+            <returns>Returns Task. Waiting on it returns list of agents</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.GetQueuesAsync(System.String)">
+            <summary>
+            Gets list of routing queues for the provided campaign
+            </summary>
+            <param name="campaignID">Campaign ID</param>
+            <returns>Returns Task. Waiting on it returns list of queues</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.AcceptCall">
+            <summary>
+            Connects current ringing IB call to agent
+            </summary>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IAgent.RejectCall(System.Boolean)">
+            <summary>
+            Rejects current ringing IB call
+            </summary>
+            <param name="isAutomatic">True in case reject call request is made by system instead of agent</param>
+            <returns>Returns Task. Waiting on the task will return any exceptions</returns>
+        </member>
+        <member name="T:TRG.WebDialer.DialerClient.IClient">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.IClient.DialerUrl">
+            <summary>
+            Url on which client can open communication channel with Dialer.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.IClient.LeadServiceUrl">
+            <summary>
+            Url on which client can access lead service.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.IClient.LoginAgents">
+            <summary>
+            Collection of agents currently logged-in using instance of <see cref="T:TRG.WebDialer.DialerClient.IClient"/>.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.IClient.IsInitialized">
+            <summary>
+            Specifies if client instance is initialized.
+            </summary>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IClient.GetLoginAgent(System.String)">
+            <summary>
+            Get login agent object with specified ID.
+            </summary>
+            <param name="agentID"></param>
+            <returns>If agent exists then agent object otherwise, null.</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IClient.Initialize(System.String,System.String)">
+            <summary>
+            Initializes client instance for communication with dialer.
+            </summary>
+            <param name="dialerUrl">Dialer url</param>
+            <param name="leadServiceUrl">Lead service url</param>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IClient.Uninitialize">
+            <summary>
+            Uninitializes client instance, disconnects all active login sessions and clears
+            cache.
+            </summary>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IClient.LoginAgent(System.String,System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Logs in Agent into Webdailer's Controller.
+            </summary>
+            <param name="agentID">Agent ID</param>
+            <param name="password">Agent password</param>
+            <param name="campaigns">List of Campaign IDs</param>
+            <returns>If agent login successfully then agent instance is returned otherwise, null</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IClient.LogoutAgent(TRG.WebDialer.DialerClient.IAgent,System.Boolean)">
+            <summary>
+            Logs out Agent from webdialer's Controller.
+            </summary>
+            <param name="agent">Reference of Agent</param>
+            <param name="isForce">Indicator if agent is being forced logged out</param>
+            <returns>Success or failure</returns>
+            
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IClient.ScheduleCallback(System.String,System.String,System.String,System.String,System.DateTime,System.String)">
+            <summary>
+            Schedules Callback for the agent.
+            </summary>
+            <param name="campaignId">Campaign ID</param>
+            <param name="agentId">Agent ID</param>
+            <param name="uniqueId">Unique ID of the lead</param>
+            <param name="endCode">End Code of callback type</param>
+            <param name="scheduleDateTime">The date and time of callback</param>
+            <param name="reason">Reason of callback</param>
+            <returns>Json string contians any error message or result message</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IClient.CancelCallback(System.String,System.String,System.String,System.String)">
+            <summary>
+            Deletes the callback.
+            </summary>
+            <param name="agentid">Agent ID</param>
+            <param name="campaignId">Campaign ID</param>
+            <param name="uniqueId">Unique ID of the lead</param>
+            <param name="endCode">End Code to update</param>
+            <returns>Json string contians any error message or result message</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IClient.GetCallbacks(System.String,System.Collections.Generic.List{System.String},System.DateTime,System.DateTime,System.Int32,System.Int32)">
+            <summary>
+            Get the lost of callbacks assigned to Agent.
+            </summary>
+            <param name="agentid">Agent ID</param>
+            <param name="campaigns">List of campaigns</param>
+            <param name="startDateTime">The start date and time</param>
+            <param name="endDateTime">The end date and time</param>
+            <param name="pageIndex">Page no.</param>
+            <param name="pageSize">Page size</param>
+            <returns>Json string that contains list of callbacks</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IClient.GetVoiceMailMessages(System.String,System.Int32)">
+            <summary>
+            Get list of Voicemail messages against Voicemail box id.
+            </summary>
+            <param name="agentid">Agent ID</param>
+            <param name="voiceMailBoxID">Voicemail box id</param>
+            <returns>JSON string containing list of voicemail messages</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IClient.DeleteVoiceMessage(System.Collections.Generic.List{System.Int32},System.String)">
+            <summary>
+            Delete voicemail messages.
+            </summary>
+            <param name="messageids">List of message ids</param>
+            <param name="agentid">Agent ID</param>
+            <returns>Any error. Empty string in case of No Error.</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IClient.GetAgentVoiceMailBoxes(System.String)">
+            <summary>
+            Get Agent's voice mail boxes.
+            </summary>
+            <param name="agentid">Agent ID</param>
+            <returns>JSON string containing list of voicemail boxes.</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IClient.MarkMessageAsRead(System.Collections.Generic.List{System.Int32},System.String)">
+            <summary>
+            Mark voicemail messages as read
+            </summary>        
+            <param name="messageids">List of message ids</param>
+            <param name="agentid">Agent ID</param>
+            <returns>Any error. Empty string in case of No Error.</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IClient.ReAssignMessages(System.String,System.Collections.Generic.List{System.Int32},System.Int32,System.Int32)">
+            <summary>
+            Re-assign voicemail messages from one box to another.
+            </summary>
+            <param name="agentid">Agent ID</param>
+            <param name="messageids">List of message ids</param>
+            <param name="desboxid">Destination voicemail box id</param>
+            <param name="sourceboxid">Source voicemail box id</param>        
+            <returns>Any error. Empty string in case of No Error.</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IClient.SearchLead(System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Get the list of leads which fullfills search criteria.
+            </summary>
+            <param name="campaignId">Campiagn ID</param>
+            <param name="columns">List of columns</param>
+            <param name="criteria">crieteria for search</param>
+            <param name="sortOrder">sorting order</param>
+            <param name="pageIndex">Page no.</param>
+            <param name="pageSize">Page size</param>
+            <returns>Json string that contains list of leads total leads and server time zone offset</returns>
+        </member>
+        <member name="M:TRG.WebDialer.DialerClient.IClient.GetLeadStructure(System.String,System.String)">
+            <summary>
+            Get the list of lead columns .
+            </summary>
+            <param name="campaignId">Campiagn ID</param>
+            <returns>Json string that contains list of columns of lead table</returns>
+        </member>
+        <member name="T:TRG.WebDialer.DialerClient.QueueInfo">
+            <summary>
+            Provides queue information that is currently active on dialer.
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.QueueInfo.ID">
+            <summary>
+            Queue ID
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.QueueInfo.Description">
+            <summary>
+            Description of queue purpose
+            </summary>
+        </member>
+        <member name="P:TRG.WebDialer.DialerClient.QueueInfo.AgentCount">
+            <summary>
+            Agents count currently logged-in to queue
+            </summary>
+        </member>
+    </members>
+</doc>
